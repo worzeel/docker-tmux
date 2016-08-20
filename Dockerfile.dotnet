@@ -1,0 +1,12 @@
+FROM microsoft/dotnet
+
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends tmux \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY base/.tmux.conf /root/.tmux.conf
+COPY base/.profile /root/.profile.base
+RUN cat /root/.profile.base >> /root/.profile
+RUN rm -rf /root/.profile.base
+
+CMD tmux
