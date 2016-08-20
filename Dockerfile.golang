@@ -12,5 +12,6 @@ COPY base/.tmux.conf /root/.tmux.conf
 COPY base/.profile /root/.profile
 COPY golang/.profile /root/.profile.golang
 RUN cat /root/.profile.golang >> /root/.profile
+RUN rm -rf /root/.profile.golang
 
 CMD tmux
